@@ -16,7 +16,6 @@ Notifications.setNotificationHandler({
 // npx eas build:configure
 const projectId = Constants.expoConfig.extra.eas.projectId;
 
-console.log(projectId);
 export default function App() {
   const permissionsHandler = async () => {
     const settings = await Notifications.getPermissionsAsync();
@@ -78,7 +77,6 @@ export default function App() {
       const pushToken = await Notifications.getExpoPushTokenAsync({
         projectId,
       });
-      console.log("PUSH TOKEN ", pushToken);
 
       if (Platform.OS === "android") {
         Notifications.setNotificationChannelAsync("default", {
@@ -105,7 +103,6 @@ export default function App() {
     const subscription2 = Notifications.addNotificationResponseReceivedListener(
       (response) => {
         const userName = response.notification.request.content.data.userName;
-        console.log(userName);
       }
     );
 
